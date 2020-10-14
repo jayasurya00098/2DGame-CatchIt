@@ -28,6 +28,7 @@ public class ChickenController : MonoBehaviour
     {
         if(manager.IsGameOver == false)
         {
+            //Timer is used to drop egg in random Time.
             timer -= Time.deltaTime;
 
             if (timer < 0f)
@@ -40,8 +41,7 @@ public class ChickenController : MonoBehaviour
                 Instantiate(egg, dropEggPosition.position, dropEggPosition.rotation);
             }
 
-            //Debug.Log(timer);
-
+            //For Moving Right and Flip to move Left.
             if (isFlipped == false && transform.position.x < 2f)
             {
                 transform.Translate(Vector3.right * speed * Time.deltaTime);
@@ -52,6 +52,7 @@ public class ChickenController : MonoBehaviour
                 spriteRenderer.flipX = isFlipped;
             }
 
+            //For Moving Left and Flip to move Right.
             if (isFlipped == true && transform.position.x > -2f)
             {
                 transform.Translate(Vector3.left * speed * Time.deltaTime);

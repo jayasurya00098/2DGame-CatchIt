@@ -7,11 +7,12 @@ public class OmbletController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Invoke("DestroySelf", 2f);
+        StartCoroutine(DestroySelf());
     }
 
-    void DestroySelf()
+    IEnumerator DestroySelf()
     {
+        yield return new WaitForSeconds(2f);
         Destroy(gameObject);
     }
 }
