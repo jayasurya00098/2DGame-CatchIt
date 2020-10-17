@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    private AudioManager audioManager;
+
     public GameObject[] eggImages;
     public GameObject gameOverScreen;
 
@@ -38,6 +40,8 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        audioManager = AudioManager.instance;
+
         score = 0;
         life = 3;
 
@@ -107,6 +111,9 @@ public class GameManager : MonoBehaviour
 
         isGameOver = true;
         gameOverScreen.SetActive(true);
+
+        audioManager.PlayClip(audioManager.gameOverClip);
+
         Debug.Log("Game Over");
     }
 }

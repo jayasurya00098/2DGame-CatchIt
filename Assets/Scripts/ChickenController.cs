@@ -5,6 +5,7 @@ using UnityEngine;
 public class ChickenController : MonoBehaviour
 {
     public GameManager manager;
+    private AudioManager audioManager;
 
     public float speed;
     public bool isFlipped = false;
@@ -21,6 +22,7 @@ public class ChickenController : MonoBehaviour
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        audioManager = AudioManager.instance;
     }
 
     // Update is called once per frame
@@ -38,6 +40,7 @@ public class ChickenController : MonoBehaviour
                 timer = randomTimer[randomNumber];
                 Debug.Log(timer);
 
+                audioManager.PlayClip(audioManager.dropEggClip);
                 Instantiate(egg, dropEggPosition.position, dropEggPosition.rotation);
             }
 
