@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
@@ -10,6 +8,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject[] eggImages;
     public GameObject gameOverScreen;
+    public GameObject pauseMenuScreen;
 
     public Text scoreText;
 
@@ -70,11 +69,13 @@ public class GameManager : MonoBehaviour
             if(isPaused == false)
             {
                 isPaused = true;
+                pauseMenuScreen.SetActive(true);
                 Time.timeScale = 0;
             }
             else
             {
                 isPaused = false;
+                pauseMenuScreen.SetActive(false);
                 Time.timeScale = 1;
             }
         }
@@ -92,6 +93,16 @@ public class GameManager : MonoBehaviour
         if (life == 0)
         {
             GameOver();
+        }
+    }
+
+    public void UnpauseGame()
+    {
+        if (isPaused == true)
+        {
+            isPaused = false;
+            pauseMenuScreen.SetActive(false);
+            Time.timeScale = 1;
         }
     }
 
